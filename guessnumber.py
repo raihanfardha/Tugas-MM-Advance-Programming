@@ -17,18 +17,23 @@ def lower(guess, tries) :
   guess = guess - modif[tries]
   return guess
 
-tebakan = 0
+tebakan = 500
 newGame()
 exit = False
-while (exit!=True) and (tries<=10) :
+while (exit!=True) and (tries<=10) and (tebakan>0) and (tebakan<1000) :
     ans = input("(Y/T/OK)")
     if (ans == "Y") :
         tebakan = higher(tebakan, tries)
         print("Apakah angkanya lebih besar dari", tebakan,"?")
+        if (tebakan == 1000) :
+            print("Angka Anda adalah 1000 atau lebih")
     elif (ans == "T") :
         tebakan = lower(tebakan, tries)
         print("Apakah angkanya lebih besar dari", tebakan,"?")
+        if (tebakan == 0) :
+            print("Angka Anda adalah 0 atau kurang")
     elif (ans == "OK") :
         print("Angka Anda adalah", tebakan)
         exit = True
+    print("counter : ", tries)
     tries = tries + 1
